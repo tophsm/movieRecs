@@ -1,12 +1,13 @@
 import pandas as pd
+import csv
 
-movies = pd.read_csv('movies.csv')
+movies = pd.read_csv('C:/Users/kalen/OneDrive/Desktop/movie_recom/movies.csv')
 
-movies = movies[['id', 'title', 'overview', 'genres']]
+movies = movies[['id', 'title', 'genre', 'original_language', 'overview']]
 
-movies['tags'] = movies['overview'] + movies['genres']
+movies['tags'] = movies['overview'] + movies['genre']
 
-newData = movies.drop(columns=['overview', 'genres'])
+newData = movies.drop(columns=['overview', 'genre'])
 
 from sklearn.feature_extraction.text import CountVectorizer
 import nltk

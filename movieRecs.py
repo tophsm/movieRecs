@@ -57,21 +57,16 @@ for i in distance[0:5]:
 
 def recommend(movies):
     index = newData[newData['title'] == movies].index[0]
-
     distance = sorted(list(enumerate(similarity[index])), reverse=True, key=lambda vector: vector[1])
-
+    
     for i in distance[0:5]:
         print(newData.iloc[i[0]].title)
-
 recommend("Toy Story")
 
 import pickle
-
 pickle.dump(newData, open('movies_list.pkl', 'wb'))
 pickle.dump(newData, open('similaroty.pkl', 'wb'))
-
 pickle.load(open('movies_list.pkl', 'rb'))
 
 import os
-
 print(os.getcwd())
